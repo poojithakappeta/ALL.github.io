@@ -35,10 +35,10 @@ A complete end-to-end deep learning pipeline for detecting and classifying **Acu
 | ResNet50      | 93.5%    |
 | MobileNetV2   | 90.3%    |
 
-📁 Folder: `base_paper/`
+📁 Folder: `base-paper-implementation/`
 
-### 🧠 Basepaper Architecture  
-![Basepaper Architecture](assets/Basepaper%20Architecture.png)
+### 🧠 Base Paper Architecture  
+![Base Paper Architecture](Basepaper%20Architecture.png)
 
 ---
 
@@ -62,10 +62,10 @@ These features are concatenated into a **7032-D** vector and passed through a fi
 | ShuffleNet + RF     | 97.75%   |
 | VGG16 + SVM         | 93.75%   |
 
-📁 Folder: `novelty_models/`
+📁 File: `Novelty code.ipynb`
 
 ### 🔬 LeukVision Architecture  
-![LeukVision Architecture](assets/LeukVision%20Architecture.png)
+![LeukVision Architecture](LeukVision%20Architecture.png)
 
 ---
 
@@ -82,7 +82,7 @@ A Flask-based web interface for real-time prediction and classification:
 📁 Folder: `web_app/`
 
 ### 🖼️ Web Interface  
-![Web Interface](assets/Web-Interface.png)
+![Web Interface](Web-Interface.png)
 
 ---
 
