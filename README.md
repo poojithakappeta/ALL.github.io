@@ -1,37 +1,34 @@
 # 🔬 DL-ALL: Acute Lymphoblastic Leukemia Classification
 
-A complete end-to-end deep learning pipeline for detecting and classifying Acute Lymphoblastic Leukemia (ALL) from peripheral blood smear images. This project includes:
-
-- ✅ Reimplementation of base paper
-- ✅ Novel hybrid models including **LeukVision**
-- ✅ A deployed web application built using Flask
+A complete end-to-end deep learning pipeline for detecting and classifying **Acute Lymphoblastic Leukemia (ALL)** from peripheral blood smear images.
 
 ---
 
-## 📁 Project Structure
+## 📌 Highlights
 
-LL.github.io/
-├── base_paper/ # Base paper implementation
-├── novelty_models/ # LeukVision, MobileNet+XGBoost, etc.
-├── web_app/ # Deployed web code (Flask)
-│ ├── app.py
-│ ├── fusion_model.py
-│ ├── wavelet_utils.py
-│ ├── templates/
-│ ├── static/
-│ ├── requirements.txt
-│ └── render.yaml
-└── README.md
+- ✅ Reimplementation of the base research paper
+- ✅ Novel hybrid deep learning model: **LeukVision**
+- ✅ Flask-based deployed web application for real-time inference
 
 ---
 
 ## 1️⃣ Base Paper Reimplementation
 
-- Dataset: ALL-IDB2
-- Techniques: GLCM, LBP, PCA, DWT
-- Classifiers: SVM, Random Forest, ResNet50, MobileNetV2
+**Dataset:** ALL-IDB2  
+**Techniques Used:**  
+- GLCM (Gray Level Co-occurrence Matrix)  
+- LBP (Local Binary Patterns)  
+- PCA (Principal Component Analysis)  
+- DWT (Discrete Wavelet Transform)  
 
-### 🔹 Results:
+**Classifiers:**
+- SVM  
+- Random Forest  
+- ResNet50  
+- MobileNetV2  
+
+### 📊 Results
+
 | Model         | Accuracy |
 |---------------|----------|
 | Random Forest | 98.25%   |
@@ -42,23 +39,25 @@ LL.github.io/
 
 ---
 
-## 2️⃣ Novelty Implementation – LeukVision
+## 2️⃣ Novel Implementation – LeukVision
 
-We introduced a hybrid fusion model **LeukVision** that combines:
+We developed a **hybrid fusion model** called **LeukVision**, combining the strengths of multiple feature extraction methods:
 
-- 🧠 ResNet50 (trainable)
-- 🔍 ViT (frozen Vision Transformer)
-- 💡 Class-specific Prompt Embeddings (128-D)
-- 🌊 Wavelet Features (4096-D Haar DWT)
+- 🧠 **ResNet50** (trainable CNN backbone)
+- 🔍 **ViT** – Frozen Vision Transformer for global attention
+- 💡 **Class-Specific Prompt Embeddings** (128-D)
+- 🌊 **Wavelet Features** using Haar DWT (4096-D)
 
-These features are concatenated (7032-D) and passed through a final dense classifier.
-This is the architecture of the LeukVision model ![LeukVision Architecture](static/leukvision_architecture.png)
+👉 All features are concatenated into a **7032-D** vector and passed through a fully connected classifier.
 
-### 🔹 Accuracy:
-- **LeukVision:** 100%
-- MobileNet + XGBoost: 98.25%
-- ShuffleNet + RF: 97.75%
-- VGG16 + SVM: 93.75%
+### 📊 Accuracy
+
+| Model              | Accuracy |
+|-------------------|----------|
+| **LeukVision**     | **100%** |
+| MobileNet + XGBoost | 98.25% |
+| ShuffleNet + RF    | 97.75%  |
+| VGG16 + SVM        | 93.75%  |
 
 📁 Folder: `novelty_models/`
 
@@ -66,59 +65,35 @@ This is the architecture of the LeukVision model ![LeukVision Architecture](stat
 
 ## 🧠 LeukVision Architecture
 
-> Replace with actual image file name after uploading
+![LeukVision Architecture](static/leukvision_architecture.png)
 
-![LeukVision](static/leukvision_architecture.png)
+📁 Image Path: Place the image in the `web_app/static/` folder.
 
 ---
 
-## 🌐 Web App (Flask)
+## 🌐 Web Application
 
-A Flask-based web interface for real-time detection and classification:
+We built a user-friendly **Flask** web interface for real-time prediction.
 
-- Upload any smear image
-- Detect if **ALL** is present (Binary ViT)
-- Classify into: **Benign**, **Early**, **Pre**, **Pro**
-- Compare across all implemented models
+### 🔍 Features:
+- Upload a peripheral smear image
+- **Binary Detection** – Is ALL present?
+- **Multiclass Classification** – Benign, Early, Pre, Pro stages
+- Option to compare predictions across all trained models
 
 📁 Folder: `web_app/`
-
----
-
-## 🚀 Live App
-
-> 🟡 Deploying soon on [Render](https://render.com)  
-> (Link will be added here after deployment)
 
 ---
 
 ## 🛠 Run Locally
 
 ```bash
+# Clone the repository
 git clone https://github.com/poojithakappeta/ALL.github.io
 cd ALL.github.io/web_app
+
+# Install dependencies
 pip install -r requirements.txt
+
+# Run the app
 python app.py
-flask
-torch
-torchvision
-transformers
-Pillow
-joblib
-gdown
-dill
-Contributors
-Kappeta Poojitha
-
-Shalini R
-
-Bathala Vandana
-
-SASTRA Deemed University – School of Computing
-Final Year Major Project Submission (2025)
-
----
-
-✅ Save this as a file named `README.md` and place it in your root repo (`ALL.github.io/`).
-
-Let me know when you're ready to deploy or add screenshots!
