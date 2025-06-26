@@ -7,8 +7,8 @@ A complete end-to-end deep learning pipeline for detecting and classifying **Acu
 ## 📌 Highlights
 
 - ✅ Reimplementation of the base research paper
-- ✅ Novel hybrid deep learning model: **LeukVision**
-- ✅ Flask-based deployed web application for real-time inference
+- ✅ Novel hybrid model: **LeukVision**
+- ✅ Flask-based web app for real-time classification
 
 ---
 
@@ -17,7 +17,7 @@ A complete end-to-end deep learning pipeline for detecting and classifying **Acu
 **Dataset:** ALL-IDB2  
 **Techniques Used:**  
 - GLCM (Gray Level Co-occurrence Matrix)  
-- LBP (Local Binary Patterns)  
+- LBP (Local Binary Pattern)  
 - PCA (Principal Component Analysis)  
 - DWT (Discrete Wavelet Transform)  
 
@@ -37,55 +37,56 @@ A complete end-to-end deep learning pipeline for detecting and classifying **Acu
 
 📁 Folder: `base_paper/`
 
+### 🧠 Basepaper Architecture  
+![Basepaper Architecture](assets/Basepaper%20Architecture.png)
+
 ---
 
 ## 2️⃣ Novel Implementation – LeukVision
 
-We developed a **hybrid fusion model** called **LeukVision**, combining the strengths of multiple feature extraction methods:
+We developed a hybrid fusion model called **LeukVision**, combining:
 
 - 🧠 **ResNet50** (trainable CNN backbone)
 - 🔍 **ViT** – Frozen Vision Transformer for global attention
 - 💡 **Class-Specific Prompt Embeddings** (128-D)
 - 🌊 **Wavelet Features** using Haar DWT (4096-D)
 
-👉 All features are concatenated into a **7032-D** vector and passed through a fully connected classifier.
+These features are concatenated into a **7032-D** vector and passed through a final dense classifier.
 
 ### 📊 Accuracy
 
-| Model              | Accuracy |
-|-------------------|----------|
-| **LeukVision**     | **100%** |
-| MobileNet + XGBoost | 98.25% |
-| ShuffleNet + RF    | 97.75%  |
-| VGG16 + SVM        | 93.75%  |
+| Model               | Accuracy |
+|---------------------|----------|
+| **LeukVision**       | **100%** |
+| MobileNet + XGBoost | 98.25%   |
+| ShuffleNet + RF     | 97.75%   |
+| VGG16 + SVM         | 93.75%   |
 
 📁 Folder: `novelty_models/`
 
----
-
-## 🧠 LeukVision Architecture
-
-![LeukVision Architecture](static/leukvision_architecture.png)
-
-📁 Image Path: Place the image in the `web_app/static/` folder.
+### 🔬 LeukVision Architecture  
+![LeukVision Architecture](assets/LeukVision%20Architecture.png)
 
 ---
 
 ## 🌐 Web Application
 
-We built a user-friendly **Flask** web interface for real-time prediction.
+A Flask-based web interface for real-time prediction and classification:
 
 ### 🔍 Features:
 - Upload a peripheral smear image
-- **Binary Detection** – Is ALL present?
-- **Multiclass Classification** – Benign, Early, Pre, Pro stages
-- Option to compare predictions across all trained models
+- Detect if **ALL** is present (Binary ViT)
+- Classify into: **Benign**, **Early**, **Pre**, **Pro**
+- Compare predictions across multiple models
 
 📁 Folder: `web_app/`
 
+### 🖼️ Web Interface  
+![Web Interface](assets/Web-Interface.png)
+
 ---
 
-## 🛠 Run Locally
+## 🛠 How to Run Locally
 
 ```bash
 # Clone the repository
@@ -95,5 +96,5 @@ cd ALL.github.io/web_app
 # Install dependencies
 pip install -r requirements.txt
 
-# Run the app
+# Run the Flask app
 python app.py
